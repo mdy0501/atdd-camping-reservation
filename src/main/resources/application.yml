@@ -1,18 +1,13 @@
 spring:
   application:
     name: camping-reservation-legacy
-  
+
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 
-  
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-  
+    url: jdbc:mysql://localhost:3307/camping?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root1234
+
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -20,11 +15,12 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
     defer-datasource-initialization: true
-  
+
   sql:
     init:
-      mode: always
+      mode: never
 
 server:
   port: 8080
